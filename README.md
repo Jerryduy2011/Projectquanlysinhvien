@@ -1,81 +1,158 @@
-TÀI LIỆU PHÂN TÍCH – THIẾT KẾ CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN C++
-1. Giới thiệu
+# 📚 TÀI LIỆU PHÂN TÍCH – THIẾT KẾ CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN C++
 
-Đây là chương trình Quản lý sinh viên được xây dựng bằng ngôn ngữ C++, chạy trên môi trường console.
+## 1. 📌 Giới thiệu
 
-Chương trình cho phép người dùng quản lý danh sách sinh viên thông qua menu. Mỗi sinh viên bao gồm các thông tin:
+Đây là chương trình **Quản lý sinh viên** được xây dựng bằng ngôn ngữ **C++**, chạy trên môi trường Console.
 
-Mã sinh viên
-Họ tên
-Lớp
-Điểm trung bình
+Chương trình cho phép người dùng quản lý danh sách sinh viên thông qua hệ thống menu.
 
-Chương trình hỗ trợ các chức năng chính như thêm, sửa, xóa, tìm kiếm, sắp xếp và thống kê sinh viên.
+Mỗi sinh viên bao gồm các thông tin:
 
-Chương trình sử dụng các kiến thức C++ cơ bản như:
+- Mã sinh viên
+- Họ tên
+- Lớp
+- Điểm trung bình
 
-struct: xây dựng kiểu dữ liệu sinh viên.
-array: lưu danh sách sinh viên.
-function: chia chương trình thành các chức năng riêng.
-string: xử lý mã sinh viên, họ tên và lớp.
-for, do while: lặp và duyệt danh sách.
-if else: kiểm tra điều kiện.
-switch case: xây dựng menu.
-Bubble Sort: sắp xếp danh sách.
-Tham chiếu &: thay đổi dữ liệu trực tiếp trong hàm.
-2. Thư viện sử dụng
+Chương trình hỗ trợ các chức năng chính:
 
-Chương trình sử dụng các thư viện:
+- ➕ Thêm sinh viên
+- 📋 Hiển thị danh sách sinh viên
+- ✏️ Sửa thông tin sinh viên
+- 🗑️ Xóa sinh viên
+- 🔎 Tìm kiếm sinh viên theo mã
+- 🔎 Tìm kiếm sinh viên theo tên
+- 📊 Sắp xếp sinh viên theo điểm
+- 📊 Sắp xếp sinh viên theo tên
+- 📝 Xếp loại học lực
+- 📈 Thống kê học lực
+- 🏆 Tìm sinh viên có điểm cao nhất
 
+---
+
+## 2. 🎯 Mục tiêu của chương trình
+
+Project được xây dựng nhằm áp dụng các kiến thức C++ cơ bản vào một bài toán quản lý thực tế.
+
+Các kiến thức được sử dụng:
+
+- `struct`
+- Mảng
+- Hàm
+- Chuỗi `string`
+- Vòng lặp `for`
+- Vòng lặp `do while`
+- Câu lệnh `if else`
+- `switch case`
+- Tham chiếu `&`
+- `const`
+- Tìm kiếm tuần tự
+- Thuật toán Bubble Sort
+- Tìm giá trị lớn nhất
+- Định dạng dữ liệu khi xuất
+
+---
+
+## 3. 🛠️ Thư viện sử dụng
+
+Chương trình sử dụng 3 thư viện chính:
+
+```cpp
 #include <iostream>
 #include <string>
 #include <iomanip>
-iostream
+```
 
-Dùng để nhập và xuất dữ liệu:
+### 3.1. Thư viện `iostream`
 
+Dùng để nhập và xuất dữ liệu.
+
+Các lệnh thường sử dụng:
+
+```cpp
 cin
 cout
+```
 
 Ví dụ:
 
+```cpp
 cout << "Nhap ma sinh vien: ";
 cin >> ma;
-string
+```
 
-Dùng để xử lý dữ liệu dạng chuỗi:
+Trong đó:
 
+- `cout`: xuất dữ liệu ra màn hình.
+- `cin`: nhập dữ liệu từ bàn phím.
+
+### 3.2. Thư viện `string`
+
+Dùng để làm việc với dữ liệu dạng chuỗi.
+
+Ví dụ:
+
+```cpp
 string maSV;
 string hoTen;
 string lop;
+```
 
-Ngoài ra sử dụng:
+Chương trình cũng sử dụng hàm:
 
+```cpp
 .find()
+```
 
 để tìm kiếm tên sinh viên.
 
-iomanip
+Ví dụ:
 
-Dùng để định dạng dữ liệu khi xuất ra màn hình:
+```cpp
+if (ds[i].hoTen.find(tuKhoa) != string::npos)
+```
 
+### 3.3. Thư viện `iomanip`
+
+Dùng để định dạng dữ liệu khi xuất ra màn hình.
+
+Các lệnh được sử dụng:
+
+```cpp
 setw()
 left
 fixed
 setprecision()
+```
 
 Ví dụ:
 
+```cpp
 cout << left
      << setw(15) << sv.maSV
      << setw(25) << sv.hoTen
+     << setw(12) << sv.lop
      << fixed << setprecision(2)
-     << sv.diemTB;
-3. Thiết kế dữ liệu
-3.1. Struct SinhVien
+     << sv.diemTB
+     << endl;
+```
 
-Chương trình sử dụng struct để lưu thông tin của một sinh viên:
+Trong đó:
 
+- `left`: căn dữ liệu về bên trái.
+- `setw(15)`: đặt độ rộng 15 ký tự.
+- `fixed`: hiển thị số thực theo dạng cố định.
+- `setprecision(2)`: hiển thị 2 chữ số sau dấu phẩy.
+- `endl`: xuống dòng.
+
+---
+
+## 4. 🧱 Thiết kế dữ liệu
+
+### 4.1. Struct `SinhVien`
+
+Chương trình sử dụng `struct` để tạo kiểu dữ liệu sinh viên:
+
+```cpp
 struct SinhVien
 {
     string maSV;
@@ -83,72 +160,109 @@ struct SinhVien
     string lop;
     double diemTB;
 };
+```
 
-Trong đó:
+Struct `SinhVien` gồm 4 thuộc tính:
 
-Thuộc tính	Kiểu dữ liệu	Ý nghĩa
-maSV	string	Mã sinh viên
-hoTen	string	Họ và tên
-lop	string	Lớp
-diemTB	double	Điểm trung bình
+| Thuộc tính | Kiểu dữ liệu | Ý nghĩa |
+|---|---|---|
+| `maSV` | `string` | Mã sinh viên |
+| `hoTen` | `string` | Họ và tên |
+| `lop` | `string` | Lớp |
+| `diemTB` | `double` | Điểm trung bình |
 
 Có thể hình dung:
 
+```text
 SinhVien
 │
 ├── maSV
 ├── hoTen
 ├── lop
 └── diemTB
-4. Lưu trữ danh sách sinh viên
+```
+
+---
+
+## 5. 💾 Lưu trữ danh sách sinh viên
 
 Chương trình sử dụng mảng:
 
+```cpp
 SinhVien ds[100];
+```
 
-Mảng có thể lưu tối đa 100 sinh viên.
+Mảng có thể lưu tối đa **100 sinh viên**.
 
 Biến:
 
+```cpp
 int n = 0;
+```
 
-dùng để lưu số lượng sinh viên hiện tại.
+dùng để lưu **số lượng sinh viên hiện tại**.
 
 Ví dụ:
 
-ds[0] → Sinh viên 1
-ds[1] → Sinh viên 2
-ds[2] → Sinh viên 3
+```text
+ds[0] → Sinh viên thứ 1
+ds[1] → Sinh viên thứ 2
+ds[2] → Sinh viên thứ 3
 ...
 ds[n-1] → Sinh viên cuối cùng
+```
 
 Khi thêm một sinh viên:
 
+```cpp
 ds[n] = sv;
 n++;
-5. Các chức năng chính
+```
 
-Chương trình gồm các chức năng:
+Trong đó:
 
-1. Thêm sinh viên
-2. Hiển thị danh sách
-3. Sửa sinh viên
-4. Xóa sinh viên
-5. Tìm kiếm sinh viên
-6. Sắp xếp sinh viên
-7. Thống kê học lực
-8. Tìm sinh viên điểm cao nhất
-0. Thoát
-6. Chức năng thêm sinh viên
+- `ds[n] = sv`: đưa sinh viên mới vào vị trí cuối danh sách.
+- `n++`: tăng số lượng sinh viên lên 1.
+
+---
+
+## 6. 📋 Danh sách các chức năng
+
+Menu chính của chương trình:
+
+```text
+========================================
+          QUAN LY SINH VIEN
+========================================
+
+1. Them sinh vien
+2. Hien thi danh sach
+3. Sua sinh vien
+4. Xoa sinh vien
+5. Tim kiem sinh vien
+6. Sap xep sinh vien
+7. Thong ke hoc luc
+8. Tim sinh vien diem cao nhat
+0. Thoat
+
+========================================
+```
+
+---
+
+## 7. ➕ Chức năng thêm sinh viên
 
 Hàm:
 
+```cpp
 void themSinhVien(SinhVien ds[], int &n);
+```
 
-Chức năng này cho phép nhập một sinh viên mới vào danh sách.
+Chức năng này cho phép người dùng nhập một sinh viên mới.
 
-Quy trình:
+### Quy trình thực hiện
 
+```text
 Nhập mã sinh viên
         ↓
 Kiểm tra mã đã tồn tại chưa
@@ -163,81 +277,161 @@ Kiểm tra mã đã tồn tại chưa
         Lưu vào mảng
              │
              ↓
-           n++
+            n++
+```
 
-Mã sinh viên được kiểm tra bằng:
+Trước khi thêm, chương trình kiểm tra mã sinh viên:
 
-kiemTraMaTonTai(ds, n, ma);
+```cpp
+if (kiemTraMaTonTai(ds, n, sv.maSV))
+{
+    cout << "Ma sinh vien da ton tai!";
+    return;
+}
+```
 
-Mục đích là đảm bảo không có hai sinh viên trùng mã.
+Mục đích là đảm bảo mỗi sinh viên có một mã riêng.
 
-7. Chức năng hiển thị danh sách
+---
+
+## 8. 📋 Chức năng hiển thị danh sách
 
 Hàm:
 
+```cpp
 void hienThiDanhSach(SinhVien ds[], int n);
+```
 
-Hàm sử dụng vòng lặp:
+Hàm sử dụng vòng lặp `for` để duyệt toàn bộ danh sách:
 
+```cpp
 for (int i = 0; i < n; i++)
 {
     xuatSinhVien(ds[i]);
 }
+```
 
-để duyệt qua toàn bộ danh sách.
+Mỗi sinh viên được xuất bằng hàm:
 
-Thông tin được định dạng thành các cột bằng:
+```cpp
+xuatSinhVien(ds[i]);
+```
 
-setw()
-left
-fixed
-setprecision()
+Thông tin được trình bày thành các cột:
 
-Ví dụ:
-
+```text
 Ma SV          Ho Ten                   Lop         Diem TB
 ------------------------------------------------------------
 SV001          Nguyen Van An            CNTT01      8.50
 SV002          Tran Van B               CNTT02      7.25
-8. Chức năng tìm vị trí sinh viên
+SV003          Le Van C                 CNTT03      9.00
+```
+
+---
+
+## 9. 🔍 Kiểm tra mã sinh viên
 
 Hàm:
 
-int timViTriTheoMa(SinhVien ds[], int n, string ma);
+```cpp
+bool kiemTraMaTonTai(SinhVien ds[], int n, string ma);
+```
 
-Hàm duyệt mảng và tìm vị trí của sinh viên dựa vào mã.
+Chức năng của hàm là kiểm tra xem mã sinh viên đã tồn tại trong danh sách hay chưa.
 
-Nếu tìm thấy:
+Hàm duyệt toàn bộ danh sách:
 
-return i;
+```cpp
+for (int i = 0; i < n; i++)
+{
+    if (ds[i].maSV == ma)
+    {
+        return true;
+    }
+}
+
+return false;
+```
+
+Nếu tìm thấy mã:
+
+```cpp
+return true;
+```
 
 Nếu không tìm thấy:
 
-return -1;
+```cpp
+return false;
+```
 
-Ví dụ:
+---
 
-ds[0] → SV001
-ds[1] → SV002
-ds[2] → SV003
-
-Tìm SV002:
-
-SV002 → vị trí 1
-
-Hàm này được sử dụng lại trong nhiều chức năng:
-
-Sửa sinh viên
-Xóa sinh viên
-Tìm kiếm theo mã
-9. Chức năng sửa sinh viên
+## 10. 🔎 Tìm vị trí sinh viên theo mã
 
 Hàm:
 
+```cpp
+int timViTriTheoMa(SinhVien ds[], int n, string ma);
+```
+
+Hàm tìm vị trí của sinh viên trong mảng dựa vào mã sinh viên.
+
+Nếu tìm thấy:
+
+```cpp
+return i;
+```
+
+Nếu không tìm thấy:
+
+```cpp
+return -1;
+```
+
+Ví dụ:
+
+```text
+ds[0] → SV001
+ds[1] → SV002
+ds[2] → SV003
+```
+
+Nếu tìm `SV002`:
+
+```text
+SV002 → vị trí 1
+```
+
+Hàm này được sử dụng lại trong nhiều chức năng:
+
+- Sửa sinh viên
+- Xóa sinh viên
+- Tìm kiếm theo mã
+
+---
+
+## 11. ✏️ Chức năng sửa sinh viên
+
+Hàm:
+
+```cpp
 void suaSinhVien(SinhVien ds[], int n);
+```
 
-Quy trình:
+Người dùng nhập mã sinh viên cần sửa.
 
+Chương trình gọi:
+
+```cpp
+timViTriTheoMa(ds, n, ma);
+```
+
+để tìm vị trí sinh viên.
+
+### Quy trình
+
+```text
 Nhập mã sinh viên
         ↓
 Tìm vị trí sinh viên
@@ -251,238 +445,351 @@ Có tìm thấy?
              │
              ↓
         Cập nhật dữ liệu
+```
 
-Mã sinh viên được giữ nguyên, chương trình cho phép thay đổi:
+Các thông tin được phép thay đổi:
 
-Họ tên
-Lớp
-Điểm trung bình
-10. Chức năng xóa sinh viên
+- Họ tên
+- Lớp
+- Điểm trung bình
+
+Mã sinh viên được giữ nguyên.
+
+---
+
+## 12. 🗑️ Chức năng xóa sinh viên
 
 Hàm:
 
+```cpp
 void xoaSinhVien(SinhVien ds[], int &n);
+```
 
 Đầu tiên chương trình tìm vị trí sinh viên cần xóa.
 
-Sau đó dịch các phần tử phía sau lên một vị trí:
+Sau đó các phần tử phía sau được dịch lên một vị trí:
 
+```cpp
 for (int i = viTri; i < n - 1; i++)
 {
     ds[i] = ds[i + 1];
 }
+```
 
-Cuối cùng:
+Sau khi xóa:
 
+```cpp
 n--;
+```
 
-Ví dụ:
+### Ví dụ
 
 Trước khi xóa:
 
+```text
 [SV001] [SV002] [SV003] [SV004]
+```
 
-Xóa SV002:
+Xóa `SV002`:
 
+```text
 [SV001] [SV003] [SV004]
+```
 
-Sau đó n giảm đi 1.
-11. Chức năng tìm kiếm theo mã
+Sau đó số lượng sinh viên giảm đi 1.
+
+---
+
+## 13. 🔎 Tìm kiếm sinh viên theo mã
 
 Hàm:
 
+```cpp
 void timTheoMa(SinhVien ds[], int n);
+```
 
-Người dùng nhập mã sinh viên.
+Người dùng nhập mã sinh viên cần tìm.
 
 Chương trình sử dụng:
 
-timViTriTheoMa()
+```cpp
+timViTriTheoMa(ds, n, ma);
+```
 
-để tìm vị trí.
+để tìm vị trí sinh viên.
 
-Nếu tìm thấy, chương trình hiển thị thông tin sinh viên.
+Nếu tìm thấy sinh viên, chương trình hiển thị thông tin của sinh viên đó.
 
-12. Chức năng tìm kiếm theo tên
+Nếu không tìm thấy:
+
+```text
+Khong tim thay sinh vien!
+```
+
+---
+
+## 14. 🔎 Tìm kiếm sinh viên theo tên
 
 Hàm:
 
+```cpp
 void timTheoTen(SinhVien ds[], int n);
+```
 
-Chương trình sử dụng:
+Chương trình sử dụng hàm `find()` của `string`:
 
-find()
-
-của string.
-
-Ví dụ:
-
+```cpp
 if (ds[i].hoTen.find(tuKhoa) != string::npos)
+```
 
-Nếu tên chứa từ khóa cần tìm thì sinh viên đó được hiển thị.
+Nếu từ khóa xuất hiện trong họ tên thì sinh viên đó được hiển thị.
 
-Ví dụ người dùng nhập:
+Ví dụ nhập:
 
+```text
 Nguyen
+```
 
-thì các tên như:
+Có thể tìm thấy:
 
+```text
 Nguyen Van An
 Nguyen Van B
 Tran Nguyen C
+```
 
-có thể được tìm thấy vì chuỗi "Nguyen" xuất hiện trong tên.
+vì chuỗi `Nguyen` xuất hiện trong tên.
 
-13. Chức năng sắp xếp theo điểm
+---
+
+## 15. 📊 Sắp xếp theo điểm
 
 Hàm:
 
+```cpp
 void sapXepTheoDiem(SinhVien ds[], int n);
+```
 
-Chương trình sử dụng thuật toán Bubble Sort.
+Chương trình sử dụng thuật toán **Bubble Sort**.
 
-Điểm được sắp xếp theo thứ tự giảm dần:
+Danh sách được sắp xếp điểm theo thứ tự giảm dần:
 
+```text
 9.50
 8.75
 8.00
 7.25
 6.50
+```
 
-Phần quan trọng:
+Điều kiện đổi chỗ:
 
+```cpp
 if (ds[j].diemTB < ds[j + 1].diemTB)
+```
 
-Nếu sinh viên phía trước có điểm thấp hơn sinh viên phía sau thì đổi chỗ.
+Nếu điểm của sinh viên phía trước nhỏ hơn điểm của sinh viên phía sau thì hai sinh viên được đổi chỗ.
 
-14. Chức năng sắp xếp theo tên
+---
+
+## 16. 📊 Sắp xếp theo tên
 
 Hàm:
 
+```cpp
 void sapXepTheoTen(SinhVien ds[], int n);
+```
 
-Chương trình cũng sử dụng Bubble Sort.
+Chương trình sử dụng thuật toán Bubble Sort.
 
-So sánh:
+Điều kiện so sánh:
 
+```cpp
 if (ds[j].hoTen > ds[j + 1].hoTen)
+```
 
-Nếu tên phía trước lớn hơn tên phía sau thì đổi chỗ.
+Nếu tên phía trước lớn hơn tên phía sau thì hai sinh viên được đổi chỗ.
 
-15. Chức năng xếp loại học lực
+---
+
+## 17. 📝 Xếp loại học lực
 
 Hàm:
 
+```cpp
 string xepLoai(double diem);
+```
 
-Dựa vào điểm trung bình để xác định học lực.
+Chương trình dựa vào điểm trung bình để xếp loại học lực.
 
-Quy tắc đang sử dụng trong chương trình:
+Quy tắc đang sử dụng:
 
-Điểm >= 8.0       → Giỏi
-Điểm >= 6.5       → Khá
-Điểm >= 5.0       → Trung bình
-Điểm < 5.0        → Yếu
+| Điểm trung bình | Xếp loại |
+|---:|---|
+| `>= 8.0` | Giỏi |
+| `>= 6.5` | Khá |
+| `>= 5.0` | Trung bình |
+| `< 5.0` | Yếu |
 
 Ví dụ:
 
-8.5  → Giỏi
-7.0  → Khá
-5.5  → Trung bình
-4.0  → Yếu
-16. Chức năng thống kê học lực
+```text
+8.5 → Giỏi
+7.0 → Khá
+5.5 → Trung bình
+4.0 → Yếu
+```
+
+---
+
+## 18. 📈 Thống kê học lực
 
 Hàm:
 
+```cpp
 void thongKe(SinhVien ds[], int n);
+```
 
-Chương trình sử dụng các biến đếm:
+Chương trình tạo các biến đếm:
 
+```cpp
 int soGioi = 0;
 int soKha = 0;
 int soTrungBinh = 0;
 int soYeu = 0;
+```
 
 Sau đó duyệt toàn bộ danh sách:
 
+```cpp
 for (int i = 0; i < n; i++)
+{
+    string loai = xepLoai(ds[i].diemTB);
 
-và sử dụng:
-
-xepLoai(ds[i].diemTB);
-
-để xác định loại học lực.
+    if (loai == "Gioi")
+    {
+        soGioi++;
+    }
+    else if (loai == "Kha")
+    {
+        soKha++;
+    }
+    else if (loai == "Trung binh")
+    {
+        soTrungBinh++;
+    }
+    else
+    {
+        soYeu++;
+    }
+}
+```
 
 Kết quả có dạng:
 
+```text
 ========== THONG KE ==========
 
 Gioi       : 3
 Kha        : 5
 Trung binh : 2
 Yeu        : 1
-17. Tìm sinh viên có điểm cao nhất
+```
+
+---
+
+## 19. 🏆 Tìm sinh viên có điểm cao nhất
 
 Hàm:
 
+```cpp
 void timDiemCaoNhat(SinhVien ds[], int n);
+```
 
-Chương trình sử dụng phương pháp tìm giá trị lớn nhất.
+Ban đầu chương trình giả sử sinh viên đầu tiên có điểm cao nhất:
 
-Ban đầu giả sử sinh viên đầu tiên có điểm cao nhất:
-
+```cpp
 int viTriMax = 0;
+```
 
-Sau đó duyệt từ sinh viên thứ hai:
+Sau đó duyệt các sinh viên còn lại:
 
+```cpp
 for (int i = 1; i < n; i++)
-
-Nếu tìm thấy điểm lớn hơn:
-
-if (ds[i].diemTB > ds[viTriMax].diemTB)
 {
-    viTriMax = i;
+    if (ds[i].diemTB > ds[viTriMax].diemTB)
+    {
+        viTriMax = i;
+    }
 }
+```
 
-thì cập nhật vị trí.
+Nếu tìm thấy điểm lớn hơn thì cập nhật:
 
-Cuối cùng:
+```cpp
+viTriMax = i;
+```
 
+Sau khi kết thúc vòng lặp:
+
+```cpp
 ds[viTriMax]
+```
 
-là sinh viên có điểm cao nhất.
+là sinh viên có điểm trung bình cao nhất.
 
-18. Menu chương trình
+---
+
+## 20. 🎮 Menu chương trình
 
 Hàm:
 
+```cpp
 void menu();
+```
 
-có nhiệm vụ hiển thị các lựa chọn cho người dùng.
+có nhiệm vụ hiển thị các chức năng cho người dùng.
 
-Trong main() sử dụng:
+Trong `main()` sử dụng:
 
+```cpp
 switch (luaChon)
+```
 
 để xử lý lựa chọn.
 
-Có thể hình dung:
+Ví dụ:
 
-              MENU
-                ↓
-          Người dùng chọn
-                ↓
-          switch - case
-                ↓
-      ┌─────────┼─────────┐
-      ↓         ↓         ↓
-    Thêm      Hiển thị    Sửa
-      ↓         ↓         ↓
-   case 1     case 2     case 3
-19. Cấu trúc tổng thể chương trình
+```cpp
+switch (luaChon)
+{
+    case 1:
+        themSinhVien(ds, n);
+        break;
 
-Toàn bộ chương trình có thể hình dung như sau:
+    case 2:
+        hienThiDanhSach(ds, n);
+        break;
 
+    case 3:
+        suaSinhVien(ds, n);
+        break;
+
+    case 4:
+        xoaSinhVien(ds, n);
+        break;
+
+    case 0:
+        cout << "Thoat chuong trinh!";
+        break;
+}
+```
+
+---
+
+## 21. 🧩 Cấu trúc tổng thể chương trình
+
+```text
                     MAIN
                      │
                      ↓
@@ -495,80 +802,478 @@ Toàn bộ chương trình có thể hình dung như sau:
      Thêm          Hiển thị       Sửa
        │             │             │
        ↓             ↓             ↓
-   themSinhVien  hienThiDanhSach suaSinhVien
-       
+themSinhVien  hienThiDanhSach  suaSinhVien
+
        ┌─────────────┼─────────────┐
        ↓             ↓             ↓
       Xóa          Tìm kiếm      Sắp xếp
        │             │             │
        ↓             ↓             ↓
 xoaSinhVien    timTheoMa/ten  sapXepTheo...
-       
+
                      │
                      ↓
                   Thống kê
                      │
                      ↓
-                  Tìm max
-20. Các kiến thức C++ được áp dụng
+             Tìm điểm cao nhất
+```
 
-Project này giúp áp dụng nhiều kiến thức cơ bản:
+---
 
-Cấu trúc dữ liệu
+## 22. 🧠 Các kiến thức C++ được áp dụng
+
+### 22.1. Struct
+
+```cpp
 struct SinhVien
-Mảng
+```
+
+Dùng để tạo kiểu dữ liệu riêng cho sinh viên và gom các thông tin liên quan vào một cấu trúc.
+
+---
+
+### 22.2. Mảng
+
+```cpp
 SinhVien ds[100];
-Hàm
+```
+
+Dùng để lưu nhiều sinh viên.
+
+---
+
+### 22.3. Hàm
+
+Ví dụ:
+
+```cpp
 void themSinhVien(...)
+void suaSinhVien(...)
 void xoaSinhVien(...)
-Tham chiếu
+```
+
+Việc chia chương trình thành các hàm giúp chương trình dễ đọc, dễ kiểm tra và dễ quản lý.
+
+---
+
+### 22.4. Tham chiếu
+
+Ví dụ:
+
+```cpp
 SinhVien &sv
+```
+
+và:
+
+```cpp
 int &n
-Chuỗi
-string
-find()
-Vòng lặp
+```
+
+Tham chiếu cho phép hàm làm việc trực tiếp với biến ban đầu.
+
+Đặc biệt:
+
+```cpp
+int &n
+```
+
+được sử dụng khi hàm cần thay đổi số lượng sinh viên.
+
+Ví dụ:
+
+```cpp
+n++;
+```
+
+hoặc:
+
+```cpp
+n--;
+```
+
+---
+
+### 22.5. `const`
+
+Ví dụ:
+
+```cpp
+const SinhVien &sv
+```
+
+Cho phép hàm sử dụng dữ liệu của sinh viên mà không thay đổi dữ liệu đó.
+
+---
+
+### 22.6. Vòng lặp
+
+Chương trình sử dụng:
+
+```cpp
 for
+```
+
+để duyệt mảng.
+
+Ví dụ:
+
+```cpp
+for (int i = 0; i < n; i++)
+{
+    // xử lý sinh viên
+}
+```
+
+Ngoài ra sử dụng:
+
+```cpp
 do while
-Điều kiện
+```
+
+để lặp menu và kiểm tra dữ liệu nhập.
+
+---
+
+### 22.7. Câu lệnh điều kiện
+
+Sử dụng:
+
+```cpp
 if
 else if
 else
-Menu
-switch case
-Thuật toán
-Bubble Sort
-Tìm kiếm tuần tự
-Tìm giá trị lớn nhất
-Định dạng xuất
-setw()
-left
-fixed
-setprecision()
-21. Cấu trúc file đề xuất
+```
 
-Nếu đưa lên GitHub, repository của bạn có thể trình bày như:
+để kiểm tra điều kiện.
 
-QuanLySinhVien/
+Ví dụ:
+
+```cpp
+if (diem >= 8.0)
+{
+    return "Gioi";
+}
+else if (diem >= 6.5)
+{
+    return "Kha";
+}
+```
+
+---
+
+### 22.8. Switch Case
+
+Sử dụng `switch case` để xây dựng menu:
+
+```cpp
+switch (luaChon)
+{
+    case 1:
+        // Thêm sinh viên
+        break;
+
+    case 2:
+        // Hiển thị danh sách
+        break;
+
+    case 0:
+        // Thoát
+        break;
+}
+```
+
+---
+
+## 23. 🔢 Các thuật toán được sử dụng
+
+### 23.1. Tìm kiếm tuần tự
+
+Chương trình duyệt lần lượt từng phần tử trong mảng:
+
+```text
+Sinh viên 1
+    ↓
+Sinh viên 2
+    ↓
+Sinh viên 3
+    ↓
+...
+```
+
+Được sử dụng trong:
+
+- Tìm mã sinh viên
+- Kiểm tra mã tồn tại
+- Tìm sinh viên theo tên
+
+---
+
+### 23.2. Bubble Sort
+
+Bubble Sort sử dụng hai vòng lặp:
+
+```cpp
+for (int i = 0; i < n - 1; i++)
+{
+    for (int j = 0; j < n - 1 - i; j++)
+    {
+        // So sánh và đổi chỗ
+    }
+}
+```
+
+Được sử dụng để:
+
+- Sắp xếp theo điểm
+- Sắp xếp theo tên
+
+---
+
+### 23.3. Tìm giá trị lớn nhất
+
+Chương trình giả sử phần tử đầu tiên là lớn nhất:
+
+```cpp
+int viTriMax = 0;
+```
+
+Sau đó so sánh với các phần tử còn lại.
+
+Mục đích là tìm:
+
+```text
+Sinh viên có điểm trung bình cao nhất
+```
+
+---
+
+## 24. 📁 Cấu trúc Project
+
+```text
+Projectquanlysinhvien/
 │
-├── README.md
+├── Projectsinhvien.cpp
 │
-└── QuanLySinhVien.cpp
+└── README.md
+```
 
 Trong đó:
 
-README.md
-    ↓
-Tài liệu phân tích + hướng dẫn project
+### `Projectsinhvien.cpp`
 
-QuanLySinhVien.cpp
-    ↓
-Code chương trình chính
-22. Kết luận
+Là file chứa mã nguồn chương trình quản lý sinh viên.
 
-Chương trình Quản lý sinh viên được xây dựng nhằm áp dụng các kiến thức C++ cơ bản vào một bài toán thực tế.
+### `README.md`
 
-Chương trình sử dụng struct để quản lý thông tin sinh viên, mảng để lưu danh sách, hàm để chia nhỏ chương trình và các thuật toán cơ bản để tìm kiếm, sắp xếp và thống kê.
+Là tài liệu mô tả project, bao gồm:
 
-Thông qua project, các kiến thức về struct, array, function, string, vòng lặp, điều kiện, switch-case, Bubble Sort và tham chiếu được kết hợp thành một chương trình hoàn chỉnh.#   P r o j e c t q u a n l y s i n h v i e n  
- 
+- Giới thiệu project
+- Mục tiêu
+- Thư viện sử dụng
+- Cấu trúc dữ liệu
+- Các chức năng
+- Thuật toán
+- Kiến thức C++ được sử dụng
+- Hướng dẫn chạy chương trình
+
+---
+
+## 25. ▶️ Hướng dẫn chạy chương trình
+
+### Bước 1: Mở project
+
+Mở thư mục project bằng Visual Studio Code.
+
+```text
+Projectquanlysinhvien/
+```
+
+### Bước 2: Mở file C++
+
+Mở:
+
+```text
+Projectsinhvien.cpp
+```
+
+### Bước 3: Biên dịch
+
+Nếu sử dụng `g++`, mở Terminal và chạy:
+
+```bash
+g++ Projectsinhvien.cpp -o Projectsinhvien
+```
+
+### Bước 4: Chạy chương trình
+
+Trên Windows:
+
+```bash
+.\Projectsinhvien
+```
+
+---
+
+## 26. 🖥️ Ví dụ chương trình
+
+Sau khi chạy chương trình, menu sẽ hiển thị:
+
+```text
+========================================
+          QUAN LY SINH VIEN
+========================================
+1. Them sinh vien
+2. Hien thi danh sach
+3. Sua sinh vien
+4. Xoa sinh vien
+5. Tim kiem sinh vien
+6. Sap xep sinh vien
+7. Thong ke hoc luc
+8. Tim sinh vien diem cao nhat
+0. Thoat
+========================================
+Nhap lua chon:
+```
+
+Ví dụ danh sách sinh viên:
+
+```text
+Ma SV          Ho Ten                   Lop         Diem TB
+------------------------------------------------------------
+SV001          Nguyen Van An            CNTT01      8.50
+SV002          Tran Van B               CNTT02      7.25
+SV003          Le Van C                 CNTT03      9.00
+```
+
+---
+
+## 27. 🔄 Luồng hoạt động của chương trình
+
+```text
+Bắt đầu
+   ↓
+Khởi tạo danh sách
+   ↓
+Hiển thị menu
+   ↓
+Người dùng nhập lựa chọn
+   ↓
+switch case
+   ↓
+Thực hiện chức năng
+   ↓
+Quay lại menu
+   ↓
+Người dùng chọn 0?
+   ├── Không → tiếp tục chương trình
+   │
+   └── Có → Kết thúc
+```
+
+---
+
+## 28. 📌 Danh sách các hàm chính
+
+| Hàm | Chức năng |
+|---|---|
+| `nhapSinhVien()` | Nhập thông tin một sinh viên |
+| `xuatSinhVien()` | Xuất thông tin một sinh viên |
+| `hienThiDanhSach()` | Hiển thị toàn bộ danh sách |
+| `kiemTraMaTonTai()` | Kiểm tra mã sinh viên |
+| `timViTriTheoMa()` | Tìm vị trí theo mã |
+| `themSinhVien()` | Thêm sinh viên |
+| `suaSinhVien()` | Sửa sinh viên |
+| `xoaSinhVien()` | Xóa sinh viên |
+| `timTheoMa()` | Tìm kiếm theo mã |
+| `timTheoTen()` | Tìm kiếm theo tên |
+| `sapXepTheoDiem()` | Sắp xếp theo điểm |
+| `sapXepTheoTen()` | Sắp xếp theo tên |
+| `xepLoai()` | Xếp loại học lực |
+| `thongKe()` | Thống kê học lực |
+| `timDiemCaoNhat()` | Tìm sinh viên điểm cao nhất |
+| `menu()` | Hiển thị menu |
+
+---
+
+## 29. 📖 Kiến thức cần nắm khi trình bày project
+
+Khi trình bày project, cần hiểu các nội dung chính:
+
+### `struct`
+
+Dùng để tạo kiểu dữ liệu `SinhVien`.
+
+### `ds[100]`
+
+Là mảng dùng để lưu danh sách sinh viên.
+
+### `n`
+
+Là số lượng sinh viên hiện tại.
+
+### `&n`
+
+Dùng khi hàm cần thay đổi số lượng sinh viên.
+
+### `SinhVien &sv`
+
+Dùng để truyền sinh viên bằng tham chiếu, cho phép hàm thay đổi dữ liệu của sinh viên ban đầu.
+
+### `const SinhVien &sv`
+
+Dùng để truyền sinh viên bằng tham chiếu nhưng không cho phép hàm thay đổi dữ liệu.
+
+### `timViTriTheoMa()`
+
+Dùng để tìm vị trí sinh viên và được tái sử dụng trong nhiều chức năng.
+
+### Bubble Sort
+
+Dùng để sắp xếp danh sách theo điểm hoặc tên.
+
+### `xepLoai()`
+
+Dùng để xác định học lực dựa trên điểm trung bình.
+
+### `switch case`
+
+Dùng để xử lý lựa chọn trong menu.
+
+---
+
+## 30. 🚀 Hướng phát triển
+
+Trong tương lai, chương trình có thể được mở rộng thêm:
+
+- Lưu danh sách sinh viên vào file.
+- Đọc danh sách sinh viên từ file.
+- Quản lý nhiều môn học.
+- Tính điểm trung bình từ nhiều môn.
+- Thêm điểm từng môn.
+- Thống kê điểm theo từng môn.
+- Tìm kiếm nâng cao.
+- Sắp xếp theo nhiều tiêu chí.
+- Sử dụng `vector` để quản lý danh sách linh hoạt hơn.
+- Xây dựng giao diện trực quan hơn.
+
+---
+
+## 31. ✅ Kết luận
+
+Chương trình **Quản lý sinh viên** được xây dựng nhằm áp dụng các kiến thức C++ cơ bản vào một bài toán thực tế.
+
+Chương trình sử dụng:
+
+- `struct` để quản lý thông tin sinh viên.
+- Mảng để lưu danh sách sinh viên.
+- Hàm để chia chương trình thành các chức năng.
+- `string` để xử lý dữ liệu dạng chuỗi.
+- Vòng lặp để duyệt và xử lý danh sách.
+- `if else` để kiểm tra điều kiện.
+- `switch case` để xây dựng menu.
+- Bubble Sort để sắp xếp.
+- Tìm kiếm tuần tự để tìm sinh viên.
+- Tham chiếu để thay đổi dữ liệu trực tiếp.
+- `iomanip` để định dạng dữ liệu khi xuất.
